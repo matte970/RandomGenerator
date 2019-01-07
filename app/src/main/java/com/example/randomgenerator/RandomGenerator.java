@@ -45,9 +45,8 @@ public class RandomGenerator extends AppCompatActivity {
             number = Long.toString(counter);
             name = "RandomNumber" + number;
 
-            OxyValues name = new OxyValues();
-            name.value = randomNumber;
-            name.time = System.currentTimeMillis(); //aktuelle Zeit, unabhängig von Systemlaufzeit
+            OxyValues OxyValues = new OxyValues(randomNumber,System.currentTimeMillis());
+
 
             O2Values.setText(randomNumber);
         }
