@@ -13,11 +13,13 @@ import java.util.Random;
 
 public class RandomGenerator extends AppCompatActivity {
 
+    int value;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_random_generator);
+
     }
 
     Handler handler = new Handler();
@@ -35,18 +37,34 @@ public class RandomGenerator extends AppCompatActivity {
             /**
              * Checks for mode (stable/critical) and assigns a Value for y-axis
              */
+
+
             int randomNumber;
+            boolean b;
+            randomNumber = r.nextInt(4) + 0;
+            b=r.nextBoolean();
+
+            if(b){
+                value+=randomNumber;
+            }else{
+                value-=randomNumber;
+            }
+
             if (!critical.isChecked()) {
-                randomNumber = r.nextInt(11) + 90;
+                if(value>100||value<90){
+                    value=95;
+                }
             } else {
-                randomNumber = r.nextInt(31) + 60;
+                if(value>90||value<60){
+                    value=89;
+                }
             }
 
             /**
              * Assigns value for x-axis using the app timestamp in Unix time
              * */
 
-            OxyValues OxyValues = new OxyValues(randomNumber, System.currentTimeMillis());
+            OxyValues OxyValues = new OxyValues(value, System.currentTimeMillis());
 
             /**
              * Displays a Toast whit the x and y values
@@ -59,7 +77,7 @@ public class RandomGenerator extends AppCompatActivity {
 
 
             /**
-             * Repeat this the same runnable code block again another 2 seconds
+             * Repeat this the same runnable code block again another 4 seconds
              */
 
             handler.postDelayed(this, 4000);
@@ -70,6 +88,8 @@ public class RandomGenerator extends AppCompatActivity {
     public void startGenerator(android.view.View next) {
 
         handler.post(runnableCode);
+        value=95;
+
 
     }
 
