@@ -89,10 +89,10 @@ public class RandomGenerator extends AppCompatActivity {
 
 
             /**
-             * Repeat this the same runnable code block again another 4 seconds
+             * Repeat this the same runnable code block again another 2 seconds
              */
 
-            handler.postDelayed(this, 4000);
+            handler.postDelayed(this, 2000);
         }
 
     };
